@@ -28,7 +28,7 @@ class _RegisterState extends State<Register> {
     return loading
         ? ErrorOccured()
         : Scaffold(
-            backgroundColor: Colors.black38,
+            backgroundColor: Colors.black,
             body: DecoratedBox(
                 position: DecorationPosition.background,
                 decoration: BoxDecoration(

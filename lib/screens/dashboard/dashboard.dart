@@ -31,9 +31,11 @@ class Dashboard extends StatelessWidget {
       return false;
     }
 
-    Future fieldsManagement() async{
-      doc.snapshots().listen((value)async{
-        if(!value.data.containsKey("flag") && !value.data.containsKey("occupation") && !value.data.containsKey("admin_approval")){
+    Future fieldsManagement() async {
+      doc.snapshots().listen((value) async {
+        if (!value.data.containsKey("flag") &&
+            !value.data.containsKey("occupation") &&
+            !value.data.containsKey("admin_approval")) {
           await doc.setData({
             'name': "Unknown",
             'occupation': "student",
@@ -43,8 +45,8 @@ class Dashboard extends StatelessWidget {
             'req': [],
             'admin_approval': 0,
           });
-        }
-        else print("Fields exist");
+        } else
+          print("Fields exist");
       });
     }
 
@@ -79,7 +81,7 @@ class Dashboard extends StatelessWidget {
                       leading: Padding(
                           padding: const EdgeInsets.all(5),
                           child: Image.asset(
-                            "assets/images/logo11.png",
+                            "assets/images/applogo.png",
                             colorBlendMode: BlendMode.difference,
                           )),
                       title: Text("Step Smart"),

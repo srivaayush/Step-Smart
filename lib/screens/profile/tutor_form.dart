@@ -422,7 +422,7 @@ class TutorFormState extends State<TutorForm> {
               onChanged: (value) {
                 setState(() {
                   if (value.isEmpty)
-                    widget.institute = 'NAN';
+                    widget.institute = 'NA';
                   else
                     widget.institute = value;
                 });
@@ -445,7 +445,7 @@ class TutorFormState extends State<TutorForm> {
               onChanged: (value) {
                 setState(() {
                   if (value.isEmpty)
-                    widget.exp = 'NAN';
+                    widget.exp = 'NA';
                   else
                     widget.exp = value;
                 });
@@ -461,7 +461,7 @@ class TutorFormState extends State<TutorForm> {
                 labelText: 'Enter your Youtube video demo link',
               ),
               validator: (value) {
-                if (value.length > 100) {
+                if (value.length > 40) {
                   return 'Limit Exceeded';
                 }
                 return null;
@@ -469,7 +469,7 @@ class TutorFormState extends State<TutorForm> {
               onChanged: (value) {
                 setState(() {
                   if (value.isEmpty)
-                    widget.yt = 'NAN';
+                    widget.yt = 'NA';
                   else
                     widget.yt = value;
                 });
@@ -481,7 +481,11 @@ class TutorFormState extends State<TutorForm> {
                 child: new RaisedButton(
                   child: const Text('Submit'),
                   onPressed: () {
-                    if (_formKey.currentState.validate() &&
+                    if (widget._image == null) {
+                      setState(() {
+                        widget.error = "Please upload the image!";
+                      });
+                    } else if (_formKey.currentState.validate() &&
                         widget._image != null) {
                       dynamic result = UpdateTutor(uid: user.uid)
                           .updateTutorDetails(

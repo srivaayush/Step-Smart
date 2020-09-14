@@ -293,7 +293,11 @@ class EditStudentFormState extends State<EditStudentForm> {
                   child: const Text("Submit"),
                   onPressed: () async {
                     // It returns true if the form is valid, otherwise returns false
-                    if (_formKey.currentState.validate() &&
+                    if (widget._image == null) {
+                      setState(() {
+                        widget.error = "Please upload the image!";
+                      });
+                    } else if (_formKey.currentState.validate() &&
                         widget._image != null) {
                       print("right1");
                       dynamic result = await UpdateStudent(uid: user.uid)
@@ -308,7 +312,7 @@ class EditStudentFormState extends State<EditStudentForm> {
                               widget.subjects);
                       print("right4");
                       if (result != null) {
-                        print("right2");
+                        // print("right2");
                         Navigator.pop(context);
                         Navigator.pop(context);
                         Toast.show("Profile Updated", context,

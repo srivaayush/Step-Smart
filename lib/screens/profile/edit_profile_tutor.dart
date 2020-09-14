@@ -479,7 +479,11 @@ class EditTutorFormState extends State<EditTutorForm> {
                 child: new RaisedButton(
                   child: const Text('Submit'),
                   onPressed: () {
-                    if (_formKey.currentState.validate() &&
+                    if (widget._image == null) {
+                      setState(() {
+                        widget.error = "Please upload the image!";
+                      });
+                    } else if (_formKey.currentState.validate() &&
                         widget._image != null) {
                       dynamic result = UpdateTutor(uid: user.uid)
                           .updateTutorDetails(

@@ -291,7 +291,12 @@ class StudentFormState extends State<StudentForm> {
                   child: const Text("Submit"),
                   onPressed: () {
                     // It returns true if the form is valid, otherwise returns false
-                    if (_formKey.currentState.validate() && _image != null) {
+                    if (_image == null) {
+                      setState(() {
+                        error = "Please upload the image!";
+                      });
+                    } else if (_formKey.currentState.validate() &&
+                        _image != null) {
                       print(gender);
                       print(_valueGender);
                       dynamic result = UpdateStudent(uid: user.uid)
