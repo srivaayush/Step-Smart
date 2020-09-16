@@ -13,10 +13,6 @@
             android:gravity="center"
             android:src="@drawable/applogo_final" />
  </item>
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/step_smart_final" />
-    </item>
+   
 
 </layer-list>

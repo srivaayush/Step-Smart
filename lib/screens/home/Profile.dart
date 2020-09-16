@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 String _name = '';
 String _exp = '';
@@ -27,6 +28,7 @@ String _buttontext = 'Submit info request';
 bool rated = false;
 bool profilemaked = false;
 String error2 = "";
+Color rate_clr;
 Future<bool> testFut(doc, userdoc) async {
   //print(_favIcon);
   await doc.get().then((value) {
@@ -45,6 +47,13 @@ Future<bool> testFut(doc, userdoc) async {
     _institute = value.data['institute'];
     _rating = value.data['rating'] / value.data['rateUser'];
   });
+  if (_rating >= 4) {
+    rate_clr = Colors.green;
+  } else if (_rating >= 2) {
+    rate_clr = Colors.deepOrange;
+  } else if (_rating >= 0) {
+    rate_clr = Colors.red;
+  }
   await userdoc.get().then((mydoc) {
     if (mydoc.data['name'] != "Unknown") {
       profilemaked = true;
@@ -138,8 +147,7 @@ class _ProfileState extends State<Profile> {
       setState(() {
         error2 = "";
         if (profilemaked == false) {
-          error2 =
-              "First, Create your Profile then only you can submit info request";
+          error2 = "Please create an account first";
           return;
         }
         if (_buttonColor == Colors.black38) {
@@ -260,7 +268,7 @@ class _ProfileState extends State<Profile> {
                                               Text(_rating.toStringAsFixed(1),
                                                   style: TextStyle(
                                                     fontSize: 20.0,
-                                                    color: Color(0xffe6020a),
+                                                    color: rate_clr,
                                                   )),
                                               Image.asset(
                                                 "assets/images/star.png",
@@ -561,57 +569,47 @@ class _ProfileState extends State<Profile> {
                       error2,
                       style: TextStyle(
                         fontSize: 20,
-                        color: Colors.orange,
+                        color: Colors.deepOrange,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
 
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: 60, right: 60, bottom: 0, top: 20),
-                    child: DropDownFormField(
-                      titleText: "Rating",
-                      hintText: "Rating",
-                      value: _valueRating,
-                      onSaved: (value) {
-                        setState(() {
-                          _valueRating = value;
-                          rating = int.parse(_valueRating);
-                        });
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          _valueRating = value;
-                          rating = int.parse(_valueRating);
-                        });
-                      },
-                      dataSource: [
-                        {
-                          "display": "1",
-                          "value": "1",
-                        },
-                        {
-                          "display": "2",
-                          "value": "2",
-                        },
-                        {
-                          "display": "3",
-                          "value": "3",
-                        },
-                        {
-                          "display": "4",
-                          "value": "4",
-                        },
-                        {
-                          "display": "5",
-                          "value": "5",
-                        },
-                      ],
-                      textField: 'display',
-                      valueField: 'value',
+                    padding: EdgeInsets.only(left: 80, right: 80, top: 20),
+                    child: Center(
+                      child: Text(
+                        "RATE THIS TEACHER",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'RobotoMono',
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
+
+                  Padding(
+                      padding: EdgeInsets.only(left: 80, right: 80),
+                      child: Center(
+                        child: RatingBar(
+                            // initialRating: 3,
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            allowHalfRating: false,
+                            unratedColor: Colors.amber.withAlpha(70),
+                            itemCount: 5,
+                            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                            onRatingUpdate: (vote) {
+                              rating = vote.toInt();
+                            }),
+                      )),
 
                   Padding(
                     padding: EdgeInsets.only(left: 60, right: 60, bottom: 0),
@@ -622,17 +620,21 @@ class _ProfileState extends State<Profile> {
                           borderRadius: new BorderRadius.circular(30.0)),
                       color: Colors.pinkAccent,
                       child: Text(
-                        'Rating',
+                        'Rate!',
                         style: TextStyle(color: Colors.white, fontSize: 13.0),
                       ),
                       onPressed: () {
                         if (rated == true) {
                           setState(() {
-                            error = 'Already rated';
+                            error = 'You\'ve already rated';
                           });
                         } else if (rating == 0) {
                           setState(() {
-                            error = 'Please Select an option and Try again!';
+                            error = 'Please Select an option and try again!';
+                          });
+                        } else if (profilemaked = false) {
+                          setState(() {
+                            error = "Please create an account first";
                           });
                         } else {
                           dynamic result =
@@ -670,7 +672,7 @@ class _ProfileState extends State<Profile> {
                       style: TextStyle(
                           color: Colors.deepOrange,
                           fontSize: 20.0,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   Container(

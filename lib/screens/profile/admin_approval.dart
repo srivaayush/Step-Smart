@@ -45,7 +45,7 @@ class AdminApproval extends StatelessWidget {
             Container(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
                 child: Text(
-                  '1. Gpay/phone pay/paytm at 8924019879 Or (Account no 31180649195, BANK NAME. SBI MMMEC,IFSC SBIN0002578)  99 amount to the admin \n2. Send the screenshot of payment to the admin on Whatsapp number ( 8924019879 ) \n3. Admin will approve your request ASAP after which you can fill the form and upload it on the app!\n\n4. Feel free to connect with us at stepsmart999@gmail.com  or at 8924019879,in case of any difficulty Happy Learning!',
+                  '1. Gpay/phone pay/paytm at 8924019879 Or (Account no 31180649195, BANK NAME. SBI MMMEC,IFSC SBIN0002578)  99 amount to the admin \n2. Send the screenshot of payment to the admin on Whatsapp number ( 8924019879 ) \n3. Admin will approve your request ASAP after which you can fill the form and upload it on the app!\n4. Feel free to connect with us at stepsmart999@gmail.com  or at 8924019879,in case of any difficulty Happy Learning!',
                   style: TextStyle(
                       fontSize: 19.0,
                       color: Colors.black,

@@ -1,4 +1,4 @@
-import 'package:etutor/screens/authenticate/sign_in.dart';
+//import 'package:etutor/screens/authenticate/sign_in.dart';
 //import 'package:etutor/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class PasswordReset extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
-                " 1) Open your email account. \n\n 2) Open the email that comes from etutor. \n\n 3) Click on link mentioned in the mail. \n\n 4) That's it you will be able to change your password  :) ",
+                " 1) Open your email account. \n\n 2) Open the email that comes from etutor. \n\n 3) Click on link mentioned in the mail. \n 4) That's it you will be able to change your password  :) ",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w500,
