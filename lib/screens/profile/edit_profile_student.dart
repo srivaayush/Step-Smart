@@ -21,14 +21,17 @@ class EditStudentForm extends StatefulWidget {
   String standard = '';
   String subjects = '';
   String error = '';
+  String _valueGender = '';
   //options
-  String _valueGender = "Male";
+
   //image portion
   File _image;
   EditStudentForm(this.doc, this.name, this.phone, this.age, this.gender,
       this.address, this.standard, this.subjects);
+
   @override
   EditStudentFormState createState() {
+    _valueGender = gender;
     return EditStudentFormState();
   }
 }
@@ -213,13 +216,13 @@ class EditStudentFormState extends State<EditStudentForm> {
               onSaved: (value) {
                 setState(() {
                   widget._valueGender = value;
-                  gender = widget._valueGender;
+                  widget.gender = widget._valueGender;
                 });
               },
               onChanged: (value) {
                 setState(() {
                   widget._valueGender = value;
-                  gender = widget._valueGender;
+                  widget.gender = widget._valueGender;
                 });
               },
               dataSource: [
@@ -299,7 +302,6 @@ class EditStudentFormState extends State<EditStudentForm> {
                       });
                     } else if (_formKey.currentState.validate() &&
                         widget._image != null) {
-                      print("right1");
                       dynamic result = await UpdateStudent(uid: user.uid)
                           .updateStudentDetails(
                               widget._image,
@@ -310,7 +312,6 @@ class EditStudentFormState extends State<EditStudentForm> {
                               widget.gender,
                               widget.standard,
                               widget.subjects);
-                      print("right4");
                       if (result != null) {
                         // print("right2");
                         Navigator.pop(context);

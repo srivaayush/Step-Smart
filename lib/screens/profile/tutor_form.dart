@@ -28,7 +28,7 @@ class TutorForm extends StatefulWidget {
   String exp = '';
   String error = '';
   String institute = '';
-  String mode = '';
+  String mode = 'Online';
   String city = '';
   String yt = '';
   int fees = 0;
@@ -289,7 +289,7 @@ class TutorFormState extends State<TutorForm> {
               valueField: 'value',
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please select an option';
+                  widget.gender = 'Male';
                 }
                 return null;
               },
@@ -328,7 +328,7 @@ class TutorFormState extends State<TutorForm> {
               valueField: 'value',
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please select an option';
+                  widget.mode = "Online";
                 }
                 return null;
               },

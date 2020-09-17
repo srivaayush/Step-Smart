@@ -32,8 +32,8 @@ class EditTutorForm extends StatefulWidget {
   int fees = 0;
   String yt = 'NAN';
   //options
-  String _valueGender = "Male";
-  String _valueMode = "Online";
+  String _valueGender = "";
+  String _valueMode = "";
   String _img;
   //image portion
   File _image;
@@ -59,6 +59,8 @@ class EditTutorForm extends StatefulWidget {
   );
   @override
   EditTutorFormState createState() {
+    _valueGender = gender;
+    _valueMode = mode;
     return EditTutorFormState();
   }
 }

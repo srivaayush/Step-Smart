@@ -26,7 +26,7 @@ class StudentFormState extends State<StudentForm> {
   String name = '';
   int phone = 0;
   int age = 0;
-  String gender = '';
+  String gender = 'Male';
   String address = '';
   String standard = '';
   String subjects = '';
@@ -237,8 +237,8 @@ class StudentFormState extends State<StudentForm> {
               textField: 'display',
               valueField: 'value',
               validator: (value) {
-                if (value.isEmpty || gender == null) {
-                  return 'Please select an option';
+                if (value.isEmpty || gender == '') {
+                  gender = 'Male';
                 }
                 return null;
               },

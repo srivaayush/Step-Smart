@@ -267,7 +267,7 @@ class StudentProfile extends StatelessWidget {
                                 vertical: 20.0, horizontal: 40.0),
                             color: Colors.red[200],
                             child: Text(
-                              'NOTICE:\n You can register with us to get the youtube demo link of whichever tutor you want!\n 1. Gpay/phone pay/paytm at 8924019879 Or (Account no 31180649195, BANK NAME. SBI MMMEC,IFSC SBIN0002578)  99* amount to the admin \n2. Send the screenshot of payment to the admin on Whatsapp number ( 8924019879 ) \n3. Admin will approve your request ASAP after which you will be sent the demo videos of teacher you wanna get!\n4. Feel free to connect with us at stepsmart999@gmail.com  or at 8924019879 or 8318448908 ,in case of any difficulty Happy Learning!',
+                              'NOTICE:\n You can contact us to get the demo youtube video of whichever tutor you want!\n 1. Gpay/PhonePe/Paytm at 8924019879 Or (Account no 31180649195, BANK NAME: SBI MMMEC,IFSC SBIN0002578)  Rs 99* to the admin \n2. Send the screenshot of payment to the admin on Whatsapp number ( 8924019879 ) \n3. Admin will approve your request ASAP after which you will be sent the demo video of teacher you wanna get!\n4. Feel free to connect with us at stepsmart999@gmail.com  or at 8924019879 or 8318448908 , in case of any difficulty Happy Learning!',
                               style: TextStyle(
                                   fontSize: 17.0,
                                   color: Colors.black,
